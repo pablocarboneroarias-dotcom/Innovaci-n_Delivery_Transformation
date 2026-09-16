@@ -136,6 +136,10 @@ frameworkSlides[0].t='Cómo se refleja nuestro AI Delivery Framework';
 frameworkSlides[0].html=frameworkSlides[0].html
   .replace('¿Cómo funciona nuestro','¿Cómo se refleja nuestro')
   .replace('Una arquitectura conectada para automatizar con criterio durante la implementación y la operación.','Una arquitectura conectada que convierte conocimiento y método en ejecución, control y aprendizaje.');
+frameworkSlides[2].html=frameworkSlides[2].html.replace(
+  'En AMS, la IA no solo ayuda a resolver: <strong>sistematiza</strong> el servicio, <strong>automatiza</strong> la operación y <strong>multiplica</strong> el conocimiento.',
+  'En Operate, la IA no solo ayuda a resolver: sistematiza el servicio, automatiza la operación y multiplica el conocimiento.'
+);
 const caseStudyIndex=slides.findIndex(slide=>slide.html.includes('09 / CASO ILUSTRATIVO'));
 if(caseStudyIndex!==-1)slides.splice(caseStudyIndex,1,...frameworkSlides);
 const modes=[['01','Asistencia','La IA sugiere','Autocompletado y ayuda puntual mientras escribes.','La persona mantiene el hilo y decide cada cambio.'],['02','Conversación','La IA ayuda a pensar','Explica código, contrasta opciones y redacta borradores.','La persona aporta contexto y verifica la respuesta.'],['03','Agentes IDE','La IA actúa sobre el proyecto','Planifica pasos, modifica archivos y usa herramientas autorizadas.','La persona acota la tarea y revisa cambios y pruebas.'],['04','Delegación','La IA trabaja en una tarea','Produce una propuesta revisable en un entorno separado.','La persona acepta o rechaza el resultado antes de integrarlo.'],['05','Orquestación','Varias capacidades cooperan','Un flujo coordina tareas, herramientas, límites y escalados.','El equipo gobierna el proceso y responde por la entrega.']];
