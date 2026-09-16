@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en" data-motion="">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cadence | Enterprise AI Delivery Workspace (Spec Kit • Salesforce Skills • MCP)</title>
+  <meta name="description" content="Spec-Driven AI workflows for enterprise Salesforce delivery: Spec Kit, 98 specialized skills, Salesforce & Figma MCP, Nebula Logger observability, and 5 Quality Gates inside VS Code Copilot Chat.">
+  <link rel="stylesheet" href="./assets/styles.css">
+  <link rel="icon" type="image/svg+xml" href="https://www.ellevio.se/gui-web/img/logo-orange.svg">
+  <style>
+    .skills-filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .skill-filter-btn {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      color: var(--fg);
+      padding: 6px 14px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .skill-filter-btn:hover, .skill-filter-btn.is-active {
+      background: var(--brand);
+      color: #ffffff;
+      border-color: var(--brand);
+    }
+    .mcp-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 24px;
+      margin-top: 24px;
+    }
+    .mcp-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-strong);
+      padding: 24px;
+      border-top: 4px solid var(--brand);
+    }
+    .mcp-card h3 {
+      margin-top: 0;
+      font-size: 18px;
+    }
+    .mcp-toolset-list {
+      list-style: none;
+      padding: 0;
+      margin: 14px 0 0;
+    }
+    .mcp-toolset-list li {
+      padding: 6px 0;
+      font-size: 13px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <a href="index.html" class="brand" aria-label="Cadence home">
+        <span class="brand-mark" aria-hidden="true"><img src="./assets/deloitte-digital-logo.png" alt=""></span>
+        <span class="brand-name"><img src="https://www.ellevio.se/gui-web/img/logo-orange.svg" alt="Ellevio"></span>
+      </a>
+
+      <nav class="primary-nav" aria-label="Primary">
+        <ul>
+          <li><a href="guides/guides.html">Get started</a></li>
+          <li><a href="workflow/workflow.html">Workflow</a></li>
+          <li><a href="skills/skills.html">Skills</a></li>
+          <li><a href="faqs/faqs.html">FAQs</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <div class="role-picker-wrapper role-picker-compact">
+          <button type="button" class="role-picker-toggle" aria-expanded="false" aria-haspopup="listbox">
+            <svg class="role-picker-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            <span class="role-picker-label">All roles</span>
+            <svg class="role-picker-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="role-picker-menu" role="listbox" aria-label="Choose your role" hidden="">
+            <button type="button" class="role-picker-item" role="option" data-role-value="all" aria-selected="true">
+              <span class="role-picker-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M3.6 9h16.8"></path><path d="M3.6 15h16.8"></path><path d="M12 3a15 15 0 0 1 0 18"></path><path d="M12 3a15 15 0 0 0 0 18"></path></svg></span>
+              <span class="role-picker-item-text"><strong>All roles</strong><span>Show everything across all delivery stages</span></span>
+            </button>
+            <button type="button" class="role-picker-item" role="option" data-role-value="0" aria-selected="false">
+              <span class="role-picker-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></span>
+              <span class="role-picker-item-text"><strong>Project Manager</strong><span>Scope, capacity, milestones</span></span>
+            </button>
+            <button type="button" class="role-picker-item" role="option" data-role-value="1" aria-selected="false">
+              <span class="role-picker-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg></span>
+              <span class="role-picker-item-text"><strong>Product Owner</strong><span>Stories, backlog, priorities</span></span>
+            </button>
+            <button type="button" class="role-picker-item" role="option" data-role-value="2" aria-selected="false">
+              <span class="role-picker-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></span>
+              <span class="role-picker-item-text"><strong>Developer</strong><span>Code, tests, deployments</span></span>
+            </button>
+            <button type="button" class="role-picker-item" role="option" data-role-value="3" aria-selected="false">
+              <span class="role-picker-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1 2-2h11"></path></svg></span>
+              <span class="role-picker-item-text"><strong>QA Engineer</strong><span>Test cases, coverage, validation</span></span>
+            </button>
+            <button type="button" class="role-picker-item" role="option" data-role-value="4" aria-selected="false">
+              <span class="role-picker-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg></span>
+              <span class="role-picker-item-text"><strong>Technical Architect</strong><span>Well-Architected, diagrams, OWD</span></span>
+            </button>
+            <button type="button" class="role-picker-item" role="option" data-role-value="5" aria-selected="false">
+              <span class="role-picker-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></span>
+              <span class="role-picker-item-text"><strong>Release Manager</strong><span>Manifests, quick deploy, sandboxes</span></span>
+            </button>
+          </div>
+        </div>
+
+        <button type="button" class="cmdk-trigger" data-cmdk-open="" aria-label="Search skills, MCP tools and use cases">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="m21 21-4.3-4.3"></path></svg>
+          <span class="cmdk-trigger-text">Search</span>
+          <kbd>⌘K</kbd>
+        </button>
+        <a href="vscode://GitHub.Copilot-Chat/chat" class="btn btn-primary">Open Copilot Chat</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="hero-inner">
+        <div>
+          <span class="hero-eyebrow">Enterprise Salesforce AI Delivery Architecture</span>
+          <h1>
+            Ship features <span class="gradient">from specification to production</span>, with Spec Kit, 98 specialized skills, and Model Context Protocol.
+          </h1>
+          <p class="hero-lead">
+            Spec-Driven Development (SDD), Well-Architected governance, mandatory Nebula Logger observability, and automated 5 Quality Gates running natively inside VS Code Copilot Chat.
+          </p>
+          <div class="hero-cta">
+            <a href="guides/guides.html" class="btn btn-primary btn-lg">
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg>
+              Get Started in 30 minutes
+            </a>
+            <div class="role-picker-wrapper">
+              <button class="role-picker-toggle" id="roleToggle" aria-expanded="false" aria-haspopup="listbox">
+                <svg class="role-picker-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                <span id="roleToggleLabel">Choose your role</span>
+                <svg class="role-picker-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="role-picker-menu" id="roleMenu" role="listbox" aria-label="Choose your role" hidden="">
+                <button type="button" class="role-picker-item" role="option" data-persona="0" aria-selected="false">
+                  <span class="role-picker-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></span>
+                  <span class="role-picker-item-text"><strong>Project Manager</strong><span>Scope, capacity, milestones</span></span>
+                </button>
+                <button type="button" class="role-picker-item" role="option" data-persona="1" aria-selected="false">
+                  <span class="role-picker-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg></span>
+                  <span class="role-picker-item-text"><strong>Product Owner</strong><span>Stories, backlog, priorities</span></span>
+                </button>
+                <button type="button" class="role-picker-item" role="option" data-persona="2" aria-selected="false">
+                  <span class="role-picker-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></span>
+                  <span class="role-picker-item-text"><strong>Developer</strong><span>Code, tests, deployments</span></span>
+                </button>
+                <button type="button" class="role-picker-item" role="option" data-persona="3" aria-selected="false">
+                  <span class="role-picker-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1 2-2h11"></path></svg></span>
+                  <span class="role-picker-item-text"><strong>QA Engineer</strong><span>Test cases, coverage, validation</span></span>
+                </button>
+                <button type="button" class="role-picker-item" role="option" data-persona="4" aria-selected="false">
+                  <span class="role-picker-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg></span>
+                  <span class="role-picker-item-text"><strong>Technical Architect</strong><span>Well-Architected, diagrams, OWD</span></span>
+                </button>
+                <button type="button" class="role-picker-item" role="option" data-persona="5" aria-selected="false">
+                  <span class="role-picker-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></span>
+                  <span class="role-picker-item-text"><strong>Release Manager</strong><span>Manifests, quick deploy, sandboxes</span></span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rs-card" id="personas">
+            <div class="rs-top">
+              <nav class="rs-tabs" role="tablist" aria-label="Persona views">
+                <button type="button" role="tab" aria-selected="true" data-view="intro">Introduction</button>
+                <button type="button" role="tab" aria-selected="false" data-view="role">Role &amp; Responsibilities</button>
+                <button type="button" role="tab" aria-selected="false" data-view="daily">SDD Day in Life</button>
+                <button type="button" role="tab" aria-selected="false" data-view="next">Availability</button>
+                <button type="button" role="tab" aria-selected="false" data-view="cases">Use Cases</button>
+              </nav>
+            </div>
+
+            <button type="button" class="rs-arrow rs-arrow-prev" aria-label="Previous persona">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+            <button type="button" class="rs-arrow rs-arrow-next" aria-label="Next persona">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
+
+            <div class="rs-body" aria-live="polite">
+
+              <div class="rs-view" id="rsViewIntro">
+                <div class="rs-intro-grid">
+                  <div class="rs-text">
+                    <p class="rs-hello">Delivery Role Perspective</p>
+                    <h3 class="rs-name">This is <strong id="rsName">the Project Manager</strong></h3>
+                    <p class="rs-sub" id="rsSub"></p>
+                    <ul class="rs-badges" id="rsBadges"></ul>
+                    <p class="rs-pitch" id="rsPitch"></p>
+                  </div>
+                  <div class="rs-avatar" aria-hidden="true">
+                    <div class="rs-avatar-frame">
+                      <img class="rs-avatar-img" src="./assets/project-manager.png" alt="">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="rs-view" id="rsViewRole" hidden="">
+                <p class="rs-eyebrow-tag" id="rsTagRole"></p>
+                <p class="rs-role-lead" id="rsRole"></p>
+                <div class="rs-cols2">
+                  <div class="rs-panel">
+                    <h4>
+                      <span class="rs-panel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg></span>
+                      Where AI Adds Value
+                    </h4>
+                    <ul class="rs-list" id="rsValue"></ul>
+                  </div>
+                  <div class="rs-panel">
+                    <h4>
+                      <span class="rs-panel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.2A8.4 8.4 0 0 1 4 11.5a8.5 8.5 0 0 1 8.5-8.5 8.4 8.4 0 0 1 8.5 8.5z"></path></svg></span>
+                      When to Reach Out
+                    </h4>
+                    <ul class="rs-list" id="rsReach"></ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="rs-view" id="rsViewDaily" hidden="">
+                <p class="rs-eyebrow-tag" id="rsTagDaily"></p>
+                <div class="rs-timeline" id="rsDaily"></div>
+                <p class="rs-summary" id="rsSummary"></p>
+              </div>
+
+              <div class="rs-view" id="rsViewNext" hidden="">
+                <p class="rs-eyebrow-tag" id="rsTagNext"></p>
+                <div class="rs-cols2">
+                  <div class="rs-section">
+                    <h4>Sprint Cadence</h4>
+                    <div class="rs-avail" id="rsAvail"></div>
+                    <p class="rs-avail-note">Illustrative role engagement across the delivery lifecycle.</p>
+                  </div>
+                  <div class="rs-section">
+                    <h4>Explore Resources</h4>
+                    <ul class="rs-list rs-links" id="rsNav"></ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="rs-view" id="rsViewCases" hidden="">
+                <p class="rs-eyebrow-tag" id="rsTagCases"></p>
+                <div class="uc-grid" id="rsCasesGrid"></div>
+                <div class="uc-detail" id="rsCaseDetail" hidden="">
+                  <button type="button" class="uc-back" id="rsCaseBack">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    Back to all use cases
+                  </button>
+                  <div class="uc-detail-card">
+                    <h3 id="rsCaseTitle"></h3>
+                    <p class="uc-detail-summary" id="rsCaseSummary"></p>
+                    <h4>What happens</h4>
+                    <p id="rsCaseBody"></p>
+                    <h4>Try it in Copilot Chat</h4>
+                    <p class="uc-prompt" id="rsCasePrompt"></p>
+                    <div class="uc-detail-foot">
+                      <p class="uc-detail-skill" id="rsCaseSkill"></p>
+                      <a class="btn btn-outline btn-sm" id="rsCaseVSCode" href="#" target="_self" rel="noopener">Open in VS Code</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="rs-dots" role="tablist" aria-label="Personas">
+              <button type="button" aria-label="Project Manager" aria-selected="true" data-index="0"></button>
+              <button type="button" aria-label="Product Owner" aria-selected="false" data-index="1"></button>
+              <button type="button" aria-label="Developer" aria-selected="false" data-index="2"></button>
+              <button type="button" aria-label="QA Engineer" aria-selected="false" data-index="3"></button>
+              <button type="button" aria-label="Technical Architect" aria-selected="false" data-index="4"></button>
+              <button type="button" aria-label="Release Manager" aria-selected="false" data-index="5"></button>
+            </div>
+
+            <div class="rs-cta">
+              <button type="button" class="btn btn-primary" id="rsExplore">
+                Explore Role Prompts
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"></path><path d="m6 13 6 6 6-6"></path></svg>
+              </button>
+              <span class="rs-cta-note" id="rsExploreNote">Ready-to-run prompts for this role</span>
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ JOURNEY ============ -->
+    <section class="section jr" id="journey" hidden="">
+      <div class="jr-bar">
+        <span class="jr-bar-dot" aria-hidden="true"></span>
+        <span>Journey for</span>
+        <strong id="jrRole">the Project Manager</strong>
+        <button type="button" class="jr-switch" id="jrSwitch">Pick a different role</button>
+      </div>
+
+      <p class="jr-eyebrow">Start in VS Code</p>
+      <h2 class="section-title" style="text-align:left;">Ready-to-run prompts with Copilot Chat</h2>
+      <p class="section-sub" style="text-align:left;margin:0 0 26px;">
+        Every prompt is wired to specialized skills and repository context. Click to open directly in VS Code Copilot Chat.
+      </p>
+
+      <div class="jr-first">
+        <ol class="jr-steps">
+          <li><span class="jr-step-n">1</span><span><strong>Open in VS Code.</strong> Copilot Chat opens with the exact skill and prompt filled in.</span></li>
+          <li><span class="jr-step-n">2</span><span><strong>Skill Execution.</strong> Copilot invokes the specialized skill, loads schema, and generates compliant artifacts.</span></li>
+          <li><span class="jr-step-n">3</span><span><strong>Human Sign-off.</strong> In line with Principle VIII, all mutations and promotions pause for your explicit review.</span></li>
+        </ol>
+
+        <div class="jr-chat">
+          <div class="jr-chat-bar">
+            <span class="jr-chat-dot"></span><span class="jr-chat-dot"></span><span class="jr-chat-dot"></span>
+            <span class="jr-chat-title">Copilot Chat</span>
+          </div>
+          <div class="jr-chat-body">
+            <p class="jr-chat-label" id="jrFirstTitle"></p>
+            <p class="jr-chat-prompt" id="jrFirstPrompt"><span class="jr-caret" aria-hidden="true">&nbsp;</span></p>
+          </div>
+          <div class="jr-chat-foot">
+            <a class="btn btn-primary" id="jrFirstOpen" href="#" target="_self" rel="noopener">Open in VS Code</a>
+            <button type="button" class="jr-shuffle" id="jrShuffle">Show me a different prompt</button>
+            <span class="jr-chat-skill" id="jrFirstSkill"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="jr-uc-head">
+        <div>
+          <p class="jr-eyebrow">All Prompts</p>
+          <h2 class="section-title" style="text-align:left;" id="jrUcHeading">Use cases</h2>
+          <p class="section-sub" style="text-align:left;margin:0;">Filter by topic, technology, or workflow stage.</p>
+        </div>
+        <label class="jr-search">
+          <span class="visually-hidden">Filter use cases</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="m21 21-4.3-4.3"></path></svg>
+          <input type="search" id="jrFilter" placeholder="Filter, e.g. apex, flow, lwc, spec..." autocomplete="off" spellcheck="false">
+        </label>
+      </div>
+
+      <div class="jr-uc-grid" id="jrGrid"></div>
+      <p class="jr-uc-empty" id="jrEmpty" hidden="">No use cases match your search.</p>
+
+      <div class="jr-uc-foot">
+        <button type="button" class="btn btn-outline" id="jrMore">Show more</button>
+        <a class="jr-jump" href="#workflow">See where <span id="jrJumpRole">this role</span> plugs into the 7 SDD stages <span aria-hidden="true">↓</span></a>
+      </div>
+    </section>
+
+    <!-- ============ SIX CORE AI PILLARS ============ -->
+    <section class="section" id="pillars">
+      <div class="two-col align-mid wide-content">
+        <div>
+          <h2 class="section-title" style="text-align:left;">Six Core AI Architecture Pillars</h2>
+          <p class="section-sub" style="text-align:left;margin:0;">
+            Our repository organizes 98 specialized AI skills into six enterprise architecture pillars. Click any card to explore the full catalogue.
+          </p>
+        </div>
+
+        <div class="cap-grid" data-reveal-group="">
+          <a class="cap-card" href="skills/skills.html#category/spec-kit">
+            <span class="cap-icon teal" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><path d="M14 2v6h6"></path><path d="M9 13h6"></path><path d="M9 17h6"></path></svg></span>
+            <h3>1. Spec-Driven Development (SDD)</h3>
+            <p class="clamp-2">Spec Kit orchestrates the full SDD cycle: Constitution → Specify → Clarify → Plan → Tasks → Analyze → Implement with full artifact traceability.</p>
+            <span class="card-foot"><span class="cap-link">Explore Spec Kit skills (22) →</span><span class="see-more" aria-hidden="true">See more</span></span>
+          </a>
+
+          <a class="cap-card" href="skills/skills.html#category/apex">
+            <span class="cap-icon teal" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></span>
+            <h3>2. Apex Engineering &amp; Bulk Testing</h3>
+            <p class="clamp-2">Generate bulkified Apex classes, domain services, triggers, and comprehensive unit tests with TestDataFactory achieving ≥85% code coverage.</p>
+            <span class="card-foot"><span class="cap-link">Explore Apex skills (6) →</span><span class="see-more" aria-hidden="true">See more</span></span>
+          </a>
+
+          <a class="cap-card" href="skills/skills.html#category/lwc">
+            <span class="cap-icon teal" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="m4.93 4.93 4.24 4.24"></path><path d="m14.83 9.17 4.24-4.24"></path><path d="m14.83 14.83 4.24 4.24"></path><path d="m9.17 14.83-4.24 4.24"></path></svg></span>
+            <h3>3. LWC &amp; SLDS Design System</h3>
+            <p class="clamp-2">Build accessible Lightning Web Components utilizing SLDS 2 styling hooks, Lightning Base Components, Sa11y accessibility, and GraphQL LDS wire adapters.</p>
+            <span class="card-foot"><span class="cap-link">Explore LWC &amp; SLDS skills (11) →</span><span class="see-more" aria-hidden="true">See more</span></span>
+          </a>
+
+          <a class="cap-card" href="skills/skills.html#category/flow">
+            <span class="cap-icon teal" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg></span>
+            <h3>4. Flow &amp; Event Integrations</h3>
+            <p class="clamp-2">Declarative Record-Triggered &amp; Screen Flows, Change Data Capture (CDC), Managed Event Subscriptions, and Named Credentials for REST APIs.</p>
+            <span class="card-foot"><span class="cap-link">Explore Integration skills (6) →</span><span class="see-more" aria-hidden="true">See more</span></span>
+          </a>
+
+          <a class="cap-card" href="skills/skills.html#category/nebula">
+            <span class="cap-icon teal" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg></span>
+            <h3>5. Nebula Logger Observability</h3>
+            <p class="clamp-2">Mandatory structured logging across all Apex, LWC, and Flow transactions. Unified scenario tracking, retention rules, and console triage.</p>
+            <span class="card-foot"><span class="cap-link">Explore Nebula Logger skills (6) →</span><span class="see-more" aria-hidden="true">See more</span></span>
+          </a>
+
+          <a class="cap-card" href="skills/skills.html#category/devops">
+            <span class="cap-icon teal" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></span>
+            <h3>6. Code Analyzer &amp; DevOps</h3>
+            <p class="clamp-2">Multi-engine static analysis (PMD, ESLint, CPD, RetireJS, SFGE), dry-run deployment validation, 10-day quick deploy, and DevOps Center tools.</p>
+            <span class="card-foot"><span class="cap-link">Explore DevOps &amp; Quality skills (14) →</span><span class="see-more" aria-hidden="true">See more</span></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WORKFLOW STRIP (SPEC KIT SDD) ============ -->
+    <section class="workflow" id="workflow">
+      <div class="section">
+        <div class="two-col align-mid wide-content flip">
+          <div>
+            <h2 class="section-title" style="text-align:left;">Spec-Driven Development: 7-Stage SDD Pipeline</h2>
+            <p class="section-sub" style="text-align:left;margin:0;">
+              Every feature progresses through structured Spec Kit stages from initial constitution principles to verified production metadata. Click on any step to open the Workflow Guide.
+            </p>
+          </div>
+
+          <div class="flow-line flow-grid is-role-aware" data-reveal-group="">
+            <a class="flow-step is-mine" href="workflow/workflow.html#stage-constitution">
+              <span class="num">1</span>
+              <span class="label">Constitution</span>
+              <span class="skill-tag">/speckit.constitution</span>
+              <span class="flow-mine">Governance</span>
+            </a>
+            <a class="flow-step" href="workflow/workflow.html#stage-specify">
+              <span class="num">2</span>
+              <span class="label">Specify</span>
+              <span class="skill-tag">/speckit.specify</span>
+            </a>
+            <a class="flow-step" href="workflow/workflow.html#stage-clarify">
+              <span class="num">3</span>
+              <span class="label">Clarify</span>
+              <span class="skill-tag">/speckit.clarify</span>
+            </a>
+            <a class="flow-step is-mine" href="workflow/workflow.html#stage-plan">
+              <span class="num">4</span>
+              <span class="label">Plan</span>
+              <span class="skill-tag">/speckit.plan</span>
+              <span class="flow-mine">Architecture</span>
+            </a>
+            <a class="flow-step" href="workflow/workflow.html#stage-tasks">
+              <span class="num">5</span>
+              <span class="label">Tasks &amp; Checklist</span>
+              <span class="skill-tag">/speckit.tasks</span>
+            </a>
+            <a class="flow-step is-mine" href="workflow/workflow.html#stage-analyze">
+              <span class="num">6</span>
+              <span class="label">Analyze Gate</span>
+              <span class="skill-tag">/speckit.analyze</span>
+              <span class="flow-mine">Quality</span>
+            </a>
+            <a class="flow-step is-mine" href="workflow/workflow.html#stage-implement">
+              <span class="num">7</span>
+              <span class="label">Implement &amp; Test</span>
+              <span class="skill-tag">/speckit.implement</span>
+              <span class="flow-mine">Build</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MODEL CONTEXT PROTOCOL (MCP) ============ -->
+    <section class="section" id="mcp">
+      <div class="wide-content">
+        <div>
+          <h2 class="section-title" style="text-align:left;">Model Context Protocol (MCP) Ecosystem</h2>
+          <p class="section-sub" style="text-align:left;margin:0 0 20px;">
+            Cadence integrates two enterprise MCP servers configured in <code>.vscode/mcp.json</code> providing deep execution capabilities.
+          </p>
+        </div>
+
+        <div class="mcp-grid">
+          <div class="mcp-card">
+            <span class="pill pill-brand" style="margin-bottom:12px;display:inline-block;">Salesforce Native</span>
+            <h3>Salesforce MCP Server (<code>@salesforce/mcp@latest</code>)</h3>
+            <p style="font-size:14px;color:var(--fg-quiet);">
+              Provides complete Salesforce tooling connectivity running over stdio directly to your active target org.
+            </p>
+            <ul class="mcp-toolset-list">
+              <li><span><strong>DevOps Center Toolset</strong></span> <span>Work items, commits, promotions &amp; PRs</span></li>
+              <li><span><strong>LWC &amp; UI Toolset</strong></span> <span>LDS UIAPI, Base components, Jest Sa11y tests</span></li>
+              <li><span><strong>GraphQL Query Toolset</strong></span> <span>GraphQL schema fetch, read &amp; mutation queries</span></li>
+              <li><span><strong>Metadata Management</strong></span> <span>Deploy metadata, retrieve, conflict checks</span></li>
+              <li><span><strong>Static Code Analysis</strong></span> <span>Code analyzer runner &amp; rule inspection</span></li>
+              <li><span><strong>Apex Unit &amp; Agent Testing</strong></span> <span>Apex test runs, code coverage, antipattern scan</span></li>
+              <li><span><strong>Aura to LWC Migration</strong></span> <span>PRD blueprints &amp; completeness verification</span></li>
+              <li><span><strong>Mobile LWC Offline</strong></span> <span>Biometrics, geofencing, barcodes &amp; offline analysis</span></li>
+            </ul>
+          </div>
+
+          <div class="mcp-card">
+            <span class="pill pill-accent" style="margin-bottom:12px;display:inline-block;">UX &amp; Design-to-Code</span>
+            <h3>Figma MCP Server (<code>com.figma.mcp/mcp</code>)</h3>
+            <p style="font-size:14px;color:var(--fg-quiet);">
+              Authoritative bridge between Figma design files and Lightning Web Component implementation.
+            </p>
+            <ul class="mcp-toolset-list">
+              <li><span><strong>Design Context Retrieval</strong></span> <span><code>get_design_context</code> for nodes &amp; frames</span></li>
+              <li><span><strong>Code Connect Mapping</strong></span> <span><code>add_code_connect_map</code> for component sync</span></li>
+              <li><span><strong>FigJam Architecture Diagrams</strong></span> <span><code>generate_diagram</code> via Mermaid.js</span></li>
+              <li><span><strong>Live Webpage Capture</strong></span> <span><code>generate_figma_design</code> from local dev</span></li>
+              <li><span><strong>Asset Export &amp; SVGs</strong></span> <span><code>download_assets</code> for vector icons &amp; fills</span></li>
+              <li><span><strong>Design System Search</strong></span> <span><code>search_design_system</code> token inspection</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ GOVERNANCE & QUALITY GATES ============ -->
+    <section class="section" id="governance">
+      <div class="two-col align-mid wide-content flip">
+        <div>
+          <h2 class="section-title" style="text-align:left;">Governance &amp; The 5 Quality Gates</h2>
+          <p class="section-sub" style="text-align:left;margin:0 0 20px;">
+            Grounded in the <strong>EBOAP Constitution v1.3.0</strong>, every delivery item must satisfy rigorous quality gates and human authorization before promotion.
+          </p>
+          <a href="vscode://GitHub.Copilot-Chat/chat?prompt=%2Fplatform-architecture-analyze" class="btn btn-outline">Run Well-Architected Audit →</a>
+        </div>
+
+        <div class="guard-grid">
+          <div class="guard-card">
+            <div class="guard-card-head">
+              <span class="pill pill-brand">Quality Gate 1</span>
+              <h3>Static Analysis Gate</h3>
+            </div>
+            <p class="clamp-2">Salesforce Code Analyzer scans must be clean of Critical &amp; High severity violations (PMD, ESLint, SFGE).</p>
+          </div>
+          <div class="guard-card">
+            <div class="guard-card-head">
+              <span class="pill pill-warn">Quality Gate 2</span>
+              <h3>Coverage &amp; Assertions Gate</h3>
+            </div>
+            <p class="clamp-2">Automated unit test suites must achieve ≥85% code coverage on Apex with bulk verification (200+ records) and Jest LWC tests.</p>
+          </div>
+          <div class="guard-card">
+            <div class="guard-card-head">
+              <span class="pill pill-accent">Quality Gate 3</span>
+              <h3>Sandbox Environment Gate</h3>
+            </div>
+            <p class="clamp-2">Metadata must deploy and validate with zero errors in dedicated sandboxes before release branch merge.</p>
+          </div>
+          <div class="guard-card">
+            <div class="guard-card-head">
+              <span class="pill pill-teal">Quality Gate 4 &amp; 5</span>
+              <h3>Playwright E2E &amp; Release Gate</h3>
+            </div>
+            <p class="clamp-2">Automated browser user journeys validate acceptance criteria; release checklist verifies i18n (EN/SV), Nebula Logger, and human sign-off.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ COMMAND PALETTE ============ -->
+  <div class="cmdk" id="cmdk" hidden="" role="dialog" aria-modal="true" aria-label="Search Cadence">
+    <div class="cmdk-panel">
+      <input class="cmdk-input" id="cmdkInput" type="text" placeholder="Search 98 skills, 6 personas, MCP tools and workflow stages..." autocomplete="off" spellcheck="false">
+      <div class="cmdk-results" id="cmdkResults"></div>
+      <div class="cmdk-foot">
+        <span><kbd>↑</kbd> <kbd>↓</kbd> navigate</span>
+        <span><kbd>enter</kbd> open in Copilot</span>
+        <span><kbd>esc</kbd> close</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <p class="footer-brand"><img src="https://www.ellevio.se/gui-web/img/logo-orange.svg" alt="" loading="lazy">Cadence</p>
+        <p class="muted small">Enterprise AI Delivery Architecture for Salesforce. Spec Kit, 98 specialized skills, MCP, and 5 Quality Gates.</p>
+        <div class="resource-links">
+          <a href="guides/guides.html" aria-label="Guides">Get Started</a>
+          <a href="workflow/workflow.html" aria-label="Workflow">Workflow</a>
+          <a href="skills/skills.html" aria-label="Skills">Skills Catalogue</a>
+          <a href="faqs/faqs.html" aria-label="FAQs">FAQs</a>
+          <a href="#governance" aria-label="Constitution">Constitution v1.3.0</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <p class="footer-heading">Spec Kit SDD</p>
+        <ul>
+          <li><a href="vscode://GitHub.Copilot-Chat/chat?prompt=%2Fspeckit.constitution">/speckit.constitution</a></li>
+          <li><a href="vscode://GitHub.Copilot-Chat/chat?prompt=%2Fspeckit.specify">/speckit.specify</a></li>
+          <li><a href="vscode://GitHub.Copilot-Chat/chat?prompt=%2Fspeckit.clarify">/speckit.clarify</a></li>
+          <li><a href="vscode://GitHub.Copilot-Chat/chat?prompt=%2Fspeckit.plan">/speckit.plan</a></li>
+          <li><a href="vscode://GitHub.Copilot-Chat/chat?prompt=%2Fspeckit.tasks">/speckit.tasks</a></li>
+          <li><a href="vscode://GitHub.Copilot-Chat/chat?prompt=%2Fspeckit.analyze">/speckit.analyze</a></li>
+          <li><a href="vscode://GitHub.Copilot-Chat/chat?prompt=%2Fspeckit.implement">/speckit.implement</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <p class="footer-heading">Salesforce Platform</p>
+        <ul>
+          <li><a href="vscode://GitHub.Copilot-Chat/chat?prompt=%2Fplatform-apex-generate">/platform-apex-generate</a></li>
+          <li><a href="vscode://GitHub.Copilot-Chat/chat?prompt=%2Fplatform-apex-test-generate">/platform-apex-test-generate</a></li>
+          <li><a href="vscode://GitHub.Copilot-Chat/chat?prompt=%2Fexperience-lwc-generate">/experience-lwc-generate</a></li>
+          <li><a href="vscode://GitHub.Copilot-Chat/chat?prompt=%2Fdesign-systems-slds-apply">/design-systems-slds-apply</a></li>
+          <li><a href="vscode://GitHub.Copilot-Chat/chat?prompt=%2Fautomation-flow-generate">/automation-flow-generate</a></li>
+          <li><a href="vscode://GitHub.Copilot-Chat/chat?prompt=%2Fnebula-logger-instrumentation">/nebula-logger-instrumentation</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <p class="footer-heading">DevOps &amp; Quality</p>
+        <ul>
+          <li><a href="vscode://GitHub.Copilot-Chat/chat?prompt=%2Fdx-code-analyzer-run">/dx-code-analyzer-run</a></li>
+          <li><a href="vscode://GitHub.Copilot-Chat/chat?prompt=%2Fplatform-deploy-validate">/platform-deploy-validate</a></li>
+          <li><a href="vscode://GitHub.Copilot-Chat/chat?prompt=%2Fplatform-quick-deploy">/platform-quick-deploy</a></li>
+          <li><a href="vscode://GitHub.Copilot-Chat/chat?prompt=%2Fplaywright-cli">/playwright-cli (E2E)</a></li>
+          <li><a href="vscode://GitHub.Copilot-Chat/chat?prompt=%2Fplatform-architecture-analyze">/platform-architecture-analyze</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <p class="footer-heading">Governance</p>
+        <ul>
+          <li><a href="#governance">Principle I: Salesforce-First</a></li>
+          <li><a href="#governance">Principle IV: Nebula Logger Standard</a></li>
+          <li><a href="#governance">Principle V: Multi-Layer Testing</a></li>
+          <li><a href="#governance">Principle VII: Multilingual (EN/SV)</a></li>
+          <li><a href="#governance">Principle VIII: Human-Gated AI</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="muted small">© 2026 Ellevio Business Operations &amp; Automation Platform (EBOAP) • Constitution v1.3.0</p>
+      <div class="footer-meta">
+        <a href="#governance">Quality Gates</a>
+        <a href="guides/guides.html">Get Started</a>
+        <a href="workflow/workflow.html">Workflow</a>
+        <a href="#mcp">MCP Tools</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="./assets/skills-data.js"></script>
+  <script src="./assets/personas-data.js"></script>
+  <script src="./assets/search-index.js"></script>
+  <script src="./assets/site.js"></script>
+  <script src="./assets/role-focus.js"></script>
+  <script src="./assets/journey.js"></script>
+
+  <!-- Persona Carousel Script -->
+  <script>
+  (function () {
+    var PERSONAS = window.PERSONAS || [];
+    var AVAIL_LABEL = { open: "Open", partial: "Partial", busy: "Full" };
+    var VIEWS = { intro: "rsViewIntro", role: "rsViewRole", daily: "rsViewDaily", next: "rsViewNext", cases: "rsViewCases" };
+    var current = 0;
+    var activeView = "intro";
+    var body = document.querySelector(".rs-body");
+    var tabs = Array.prototype.slice.call(document.querySelectorAll(".rs-tabs [role=tab]"));
+    var dots = Array.prototype.slice.call(document.querySelectorAll(".rs-dots button"));
+
+    function li(text) { return "<li>" + text + "</li>"; }
+    function link(item) { return '<li><a href="' + item.href + '">' + item.label + " &rsaquo;</a></li>"; }
+
+    function fade() {
+      body.classList.remove("rs-swap");
+      void body.offsetWidth;
+      body.classList.add("rs-swap");
+    }
+
+    function render() {
+      var p = PERSONAS[current];
+      if (!p) return;
+      dots.forEach(function (d, n) { d.setAttribute("aria-selected", n === current ? "true" : "false"); });
+      if (p.icon) document.querySelector(".rs-avatar-img").src = p.icon;
+      document.getElementById("rsName").textContent = p.name;
+      document.getElementById("rsSub").textContent = p.sub;
+      document.getElementById("rsBadges").innerHTML = p.badges.map(li).join("");
+      document.getElementById("rsPitch").textContent = p.pitch;
+      var tag = p.name.replace(/^the /, "");
+      document.getElementById("rsTagRole").textContent = tag;
+      document.getElementById("rsTagDaily").textContent = "A day in the life of " + p.name;
+      document.getElementById("rsTagNext").textContent = tag;
+      document.getElementById("rsRole").textContent = p.role;
+      document.getElementById("rsValue").innerHTML = p.value.map(li).join("");
+      document.getElementById("rsReach").innerHTML = p.reach.map(li).join("");
+      document.getElementById("rsDaily").innerHTML = p.daily.map(function (d) {
+        var action = d.href ? '<a href="' + d.href + '">' + d.action + "</a>" : d.action;
+        return '<div class="rs-step">' +
+          '<span class="rs-step-time">' + d.time + "</span>" +
+          '<div class="rs-step-body">' +
+            '<p class="rs-step-moment">' + d.moment + "</p>" +
+            '<p class="rs-step-action">' + action + "</p>" +
+            '<p class="rs-step-outcome">' + d.outcome + "</p>" +
+          "</div></div>";
+      }).join("");
+      document.getElementById("rsSummary").textContent = p.summary;
+      document.getElementById("rsAvail").innerHTML = p.avail.map(function (w) {
+        return '<div class="rs-avail-week"><span class="rs-avail-label">' + w[0] + '</span><span class="rs-avail-state is-' + w[1] + '">' + (AVAIL_LABEL[w[1]] || w[1]) + "</span></div>";
+      }).join("");
+      document.getElementById("rsNav").innerHTML = p.nav.map(link).join("");
+      document.getElementById("rsTagCases").textContent = tag + " · " + p.cases.length + " use cases";
+      document.getElementById("rsExploreNote").textContent = p.cases.length + " ready-to-run prompts for the " + tag;
+    }
+
+    function setView(v) {
+      activeView = v;
+      tabs.forEach(function (t) { t.setAttribute("aria-selected", t.dataset.view === v ? "true" : "false"); });
+      Object.keys(VIEWS).forEach(function (k) {
+        document.getElementById(VIEWS[k]).hidden = k !== v;
+      });
+    }
+
+    function announce() {
+      document.dispatchEvent(new CustomEvent("cadence:persona", { detail: { index: current, role: current } }));
+    }
+
+    function showPersona(i) {
+      current = (i + PERSONAS.length) % PERSONAS.length;
+      try { window.localStorage.setItem("cadence.role", String(current)); } catch (e) {}
+      fade();
+      render();
+      announce();
+    }
+
+    tabs.forEach(function (t) { t.addEventListener("click", function () { fade(); setView(t.dataset.view); }); });
+    dots.forEach(function (d) { d.addEventListener("click", function () { showPersona(parseInt(d.dataset.index, 10)); }); });
+    document.querySelector(".rs-arrow-prev").addEventListener("click", function () { showPersona(current - 1); });
+    document.querySelector(".rs-arrow-next").addEventListener("click", function () { showPersona(current + 1); });
+
+    document.addEventListener("cadence:persona", function (e) {
+      if (e.detail && e.detail.index !== undefined && e.detail.index !== current) {
+        current = e.detail.index;
+        fade();
+        render();
+      }
+    });
+
+    try {
+      var saved = parseInt(window.localStorage.getItem("cadence.role"), 10);
+      if (saved >= 0 && saved < PERSONAS.length) { current = saved; }
+    } catch (e) {}
+
+    render();
+    setView("intro");
+  })();
+  </script>
+</body>
+</html>

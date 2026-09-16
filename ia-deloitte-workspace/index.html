@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="IA Deloitte, workspace de capacidades de IA para el delivery tecnológico de Naturgy NewCo." />
+    <title>IA Deloitte | Workspace de delivery Naturgy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/styles.css" />
+    <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" defer></script>
+    <script type="module" src="assets/app.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#contenido">Ir al contenido principal</a>
+
+    <header class="topbar">
+      <div class="brand-lockup" aria-label="Deloitte Digital y Naturgy">
+        <img class="brand-deloitte" src="https://www.deloittedigital.com/content/dam/digital/resource/header/deloittedigital-logo-white.png" alt="Deloitte Digital" />
+        <span class="brand-divider" aria-hidden="true"></span>
+        <span class="naturgy-plate">
+          <img src="https://stproportalcorporativo.blob.core.windows.net/uploads/2022/10/logo-naturgy.svg" alt="Naturgy" />
+        </span>
+      </div>
+      <div class="product-mark">
+        <strong>IA Deloitte</strong>
+        <span>Workspace de delivery</span>
+      </div>
+      <div class="topbar-actions">
+        <button class="search-trigger" type="button" data-open-search aria-label="Abrir búsqueda global">
+          <i data-lucide="search" aria-hidden="true"></i>
+          <span>Buscar en IA Deloitte...</span>
+          <kbd>Ctrl K</kbd>
+        </button>
+        <label class="role-quick-select">
+          <span class="sr-only">Rol activo</span>
+          <i data-lucide="user-round" aria-hidden="true"></i>
+          <select id="header-role-select" aria-label="Seleccionar rol"></select>
+        </label>
+        <button class="icon-button mobile-menu-button" type="button" data-mobile-menu aria-label="Abrir navegación">
+          <i data-lucide="menu" aria-hidden="true"></i>
+        </button>
+      </div>
+    </header>
+
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Navegación principal">
+        <nav>
+          <a class="nav-item is-active" href="#inicio" data-section-link="inicio"><i data-lucide="layout-grid" aria-hidden="true"></i><span>Inicio</span></a>
+          <a class="nav-item" href="#mapa" data-section-link="mapa"><i data-lucide="orbit" aria-hidden="true"></i><span>Mapa de IA</span></a>
+          <a class="nav-item" href="#activos" data-section-link="activos"><i data-lucide="boxes" aria-hidden="true"></i><span>Activos</span></a>
+          <a class="nav-item" href="#descubrir" data-section-link="descubrir"><i data-lucide="compass" aria-hidden="true"></i><span>Cómo utilizarlo</span></a>
+          <a class="nav-item" href="#ciclo" data-section-link="ciclo"><i data-lucide="route" aria-hidden="true"></i><span>Ciclo de delivery</span></a>
+          <a class="nav-item" href="#roles" data-section-link="roles"><i data-lucide="users-round" aria-hidden="true"></i><span>Por rol</span></a>
+          <a class="nav-item" href="#casos" data-section-link="casos"><i data-lucide="list-filter" aria-hidden="true"></i><span>Casos de uso</span></a>
+          <a class="nav-item" href="#gobierno" data-section-link="gobierno"><i data-lucide="shield-check" aria-hidden="true"></i><span>Gobierno</span></a>
+        </nav>
+        <div class="sidebar-meta">
+          <span class="status-dot" aria-hidden="true"></span>
+          <div><strong>Repositorio actual</strong><span>API Salesforce 66.0</span></div>
+        </div>
+      </aside>
+
+      <main id="contenido" tabindex="-1">
+        <section class="overview-section section" id="inicio" aria-labelledby="overview-title">
+          <div class="overview-copy">
+            <div class="eyebrow"><span>Capacidad interna</span><span>Naturgy NewCo</span></div>
+            <h1 id="overview-title">IA Deloitte</h1>
+            <p class="overview-lead">Conocimiento, arquitectura, agentes especializados, herramientas y controles aplicados durante todo el ciclo de delivery.</p>
+            <p class="overview-note">Permite localizar qué capacidad utilizar, quién debe validarla y qué activos reales del repositorio la hacen posible.</p>
+            <div class="overview-actions">
+              <a class="button button-primary" href="#mapa"><i data-lucide="orbit" aria-hidden="true"></i>Explorar arquitectura</a>
+              <a class="button button-secondary" href="#descubrir"><i data-lucide="compass" aria-hidden="true"></i>Encontrar una capacidad</a>
+            </div>
+          </div>
+          <div class="overview-dashboard" aria-label="Indicadores del repositorio">
+            <div class="snapshot-heading"><span>Estado del workspace</span><strong id="snapshot-date"></strong></div>
+            <div class="kpi-grid" id="kpi-grid"></div>
+            <div class="scope-strip">
+              <i data-lucide="circle-check-big" aria-hidden="true"></i>
+              <span>Datos contrastados con el repositorio. Las capacidades no implantadas se identifican como evolución.</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="section map-section" id="mapa" aria-labelledby="map-title">
+          <div class="section-heading heading-with-controls">
+            <div>
+              <span class="section-index">01 · Arquitectura</span>
+              <h2 id="map-title">Cómo está construida IA Deloitte</h2>
+              <p>Todo lo que alimenta al asistente: funcionalidades documentadas, agentes por rol, contexto base, arquitectura y herramientas de verificación.</p>
+            </div>
+          </div>
+          <div class="project-map-filters" id="map-filters" role="group" aria-label="Filtrar ramas del mapa"></div>
+          <div class="concept-map" id="concept-map" aria-label="Mapa del proyecto IA Deloitte">
+            <svg class="map-connections" id="map-connections" aria-hidden="true"></svg>
+            <div class="map-stage" id="map-stage"></div>
+          </div>
+        </section>
+
+        <section class="section assets-section" id="activos" aria-labelledby="assets-title">
+          <div class="section-heading">
+            <span class="section-index">02 · Activos y trazabilidad</span>
+            <h2 id="assets-title">Del concepto al archivo real</h2>
+            <p>Explora por significado. Las rutas aparecen al final del recorrido, no como punto de entrada.</p>
+          </div>
+          <div class="asset-layout">
+            <nav class="asset-categories" id="asset-categories" aria-label="Categorías de activos"></nav>
+            <div class="asset-browser">
+              <div class="asset-browser-head">
+                <div><span class="section-index" id="asset-category-kicker"></span><h3 id="asset-category-title"></h3></div>
+                <label class="inline-search"><i data-lucide="search" aria-hidden="true"></i><span class="sr-only">Filtrar activos</span><input id="asset-filter" type="search" placeholder="Filtrar esta categoría" /></label>
+              </div>
+              <div class="asset-list" id="asset-list"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section discovery-section" id="descubrir" aria-labelledby="discover-title">
+          <div class="section-heading">
+            <span class="section-index">03 · Orientación</span>
+            <h2 id="discover-title">¿Qué necesitas hacer?</h2>
+            <p>Entra por tu momento del proyecto, por la actividad o por tu rol. Las tres vistas llevan a los mismos casos de uso.</p>
+          </div>
+          <div class="discovery-workspace">
+            <div class="discovery-tabs" role="tablist" aria-label="Perspectiva de exploración">
+              <button type="button" role="tab" aria-selected="true" aria-controls="discover-panel" data-discover-tab="phase"><i data-lucide="milestone" aria-hidden="true"></i>Por fase</button>
+              <button type="button" role="tab" aria-selected="false" aria-controls="discover-panel" data-discover-tab="activity"><i data-lucide="list-todo" aria-hidden="true"></i>Por actividad</button>
+              <button type="button" role="tab" aria-selected="false" aria-controls="discover-panel" data-discover-tab="role"><i data-lucide="user-round" aria-hidden="true"></i>Por rol</button>
+            </div>
+            <div class="discover-panel" id="discover-panel" role="tabpanel"></div>
+          </div>
+        </section>
+
+        <section class="section lifecycle-section" id="ciclo" aria-labelledby="lifecycle-title">
+          <div class="section-heading heading-with-controls">
+            <div>
+              <span class="section-index">04 · Ciclo de delivery</span>
+              <h2 id="lifecycle-title">De la necesidad a la mejora continua</h2>
+              <p>El trabajo no termina con el despliegue: incidencias, evolutivos y aprendizaje alimentan el siguiente ciclo.</p>
+            </div>
+            <span class="context-chip" id="phase-role-chip"><i data-lucide="user-round" aria-hidden="true"></i><span>Todos los roles</span></span>
+          </div>
+          <div class="lifecycle-track" id="lifecycle-track" role="tablist" aria-label="Fases del ciclo de delivery"></div>
+          <div class="lifecycle-detail" id="lifecycle-detail" role="tabpanel"></div>
+        </section>
+
+        <section class="section roles-section" id="roles" aria-labelledby="roles-title">
+          <div class="section-heading">
+            <span class="section-index">05 · Experiencia por rol</span>
+            <h2 id="roles-title">Qué puede hacer cada perfil con IA Deloitte</h2>
+            <p>Selecciona tu rol y una necesidad. El contexto de actividad se conserva cuando cambias de perfil.</p>
+          </div>
+          <div class="role-selector" id="role-selector" role="tablist" aria-label="Roles del proyecto"></div>
+          <div class="role-workspace">
+            <aside class="role-profile" id="role-profile"></aside>
+            <div class="role-activities">
+              <div class="panel-title"><span>¿Qué necesitas hacer?</span><span id="role-usecase-count"></span></div>
+              <div class="activity-list" id="role-activity-list" role="tablist" aria-label="Actividades disponibles para el rol"></div>
+            </div>
+            <article class="role-outcome" id="role-outcome" aria-live="polite"></article>
+          </div>
+        </section>
+
+        <section class="section usecases-section" id="casos" aria-labelledby="usecases-title">
+          <div class="section-heading heading-with-controls">
+            <div>
+              <span class="section-index">06 · Casos de uso</span>
+              <h2 id="usecases-title">Capacidades aplicadas al trabajo diario</h2>
+              <p>Cada caso conecta necesidad, entradas, agentes, herramientas, resultado y validación humana.</p>
+            </div>
+            <div class="filter-row" id="usecase-filters" aria-label="Filtrar casos de uso"></div>
+          </div>
+          <div class="usecase-table" id="usecase-table"></div>
+        </section>
+
+        <section class="section governance-section" id="gobierno" aria-labelledby="governance-title">
+          <div class="section-heading">
+            <span class="section-index">07 · Gobierno</span>
+            <h2 id="governance-title">Personas, IA y controles</h2>
+            <p>La IA acelera el trabajo; la arquitectura, la calidad y las decisiones humanas conservan la autoridad.</p>
+          </div>
+          <div class="governance-flow" aria-label="Modelo de gobierno de IA Deloitte">
+            <div class="governance-column human">
+              <i data-lucide="users" aria-hidden="true"></i><h3>Personas</h3>
+              <ul><li>Definen la intención</li><li>Aplican criterio</li><li>Deciden y aprueban</li></ul>
+            </div>
+            <div class="governance-connector"><span>dirigen</span><i data-lucide="arrow-right" aria-hidden="true"></i></div>
+            <div class="governance-column ai">
+              <i data-lucide="sparkles" aria-hidden="true"></i><h3>IA Deloitte</h3>
+              <ul><li>Analiza y relaciona</li><li>Propone y genera</li><li>Ejecuta herramientas</li></ul>
+            </div>
+            <div class="governance-connector"><span>sometida a</span><i data-lucide="arrow-right" aria-hidden="true"></i></div>
+            <div class="governance-column controls">
+              <i data-lucide="shield-check" aria-hidden="true"></i><h3>Controles</h3>
+              <ul><li>Arquitectura y reglas</li><li>Testing y revisión</li><li>Seguridad y trazabilidad</li></ul>
+            </div>
+          </div>
+          <div class="governance-note"><i data-lucide="scale" aria-hidden="true"></i><p><strong>Principio operativo.</strong> Ningún agente sustituye la aprobación del rol responsable. El resultado debe revisarse con los estándares y evidencias del proyecto.</p></div>
+        </section>
+
+        <footer class="workspace-footer">
+          <div><strong>IA Deloitte</strong><span>Workspace interno para el delivery tecnológico de Naturgy NewCo</span></div>
+          <span>Fuente: repositorio actual · API 66.0</span>
+        </footer>
+      </main>
+    </div>
+
+    <div class="modal-backdrop" id="search-modal" hidden>
+      <section class="search-modal" role="dialog" aria-modal="true" aria-labelledby="search-title">
+        <div class="search-modal-head">
+          <i data-lucide="search" aria-hidden="true"></i>
+          <label><span class="sr-only" id="search-title">Buscar en IA Deloitte</span><input id="global-search-input" type="search" placeholder="Buscar agentes, casos, features, testing o archivos..." autocomplete="off" /></label>
+          <button class="icon-button" type="button" data-close-search aria-label="Cerrar búsqueda"><i data-lucide="x" aria-hidden="true"></i></button>
+        </div>
+        <div class="search-hints" id="search-hints"><span>Prueba con</span><button type="button">Playwright</button><button type="button">Testing</button><button type="button">Incidencia</button><button type="button">Salesforce</button></div>
+        <div class="search-results" id="search-results" aria-live="polite"></div>
+      </section>
+    </div>
+
+    <div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+    <aside class="detail-drawer" id="detail-drawer" aria-labelledby="drawer-title" aria-hidden="true">
+      <div class="drawer-head">
+        <div><span class="status-badge" id="drawer-status"></span><span class="drawer-category" id="drawer-category"></span></div>
+        <button class="icon-button" type="button" data-close-drawer aria-label="Cerrar detalle"><i data-lucide="x" aria-hidden="true"></i></button>
+      </div>
+      <div class="drawer-body" id="drawer-body"></div>
+    </aside>
+  </body>
+</html>

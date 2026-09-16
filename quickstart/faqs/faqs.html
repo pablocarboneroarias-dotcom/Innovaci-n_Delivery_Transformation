@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<!-- saved from url=(0079)faqs.html#troubleshooting -->
+<html lang="en" data-motion=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FAQs | Cadence</title>
+  <meta name="description" content="Frequently asked questions about the Cadence AI workspace: who it is for, getting started, everyday use, skills, agents, safety, governance, and troubleshooting. Built for the whole delivery team, not just developers.">
+  <link rel="stylesheet" href="./assets/styles.css">
+  <link rel="icon" type="image/svg+xml" href="https://www.ellevio.se/gui-web/img/logo-orange.svg">
+  <style>
+    .faq-item {
+      border: 1px solid var(--border, #e3e3e3);
+      border-radius: 8px;
+      margin-bottom: .75rem;
+      background: var(--surface, #fff);
+    }
+
+    .faq-item summary {
+      cursor: pointer;
+      padding: .85rem 1rem;
+      font-weight: 600;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-item summary::after {
+      content: "+";
+      font-weight: 400;
+      opacity: .6;
+    }
+
+    .faq-item[open] summary::after {
+      content: "\2212";
+    }
+
+    .faq-item .faq-body {
+      padding: 0 1rem 1rem;
+    }
+
+    .faq-item .faq-body p {
+      margin-top: 0;
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="header-inner"><button type="button" class="contents-toggle" aria-label="Open page contents" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg><span>Contents</span></button>
+      <a href="../index.html" class="brand" aria-label="Cadence home">
+        <span class="brand-mark" aria-hidden="true"><img src="./assets/deloitte-digital-logo.png" alt=""></span>
+        <span class="brand-name"><img src="https://www.ellevio.se/gui-web/img/logo-orange.svg" alt="Ellevio"></span>
+      </a>
+
+      <nav class="primary-nav" aria-label="Primary">
+        <ul>
+          <li><a href="../guides/guides.html">Get started</a></li>
+          <li><a href="../workflow/workflow.html">Workflow</a></li>
+          <li><a href="../skills/skills.html">Skills</a></li>
+          <li><a href="faqs.html" aria-current="page">FAQs</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <div class="role-picker-wrapper role-picker-compact">
+          <button type="button" class="role-picker-toggle" aria-expanded="false" aria-haspopup="listbox">
+            <svg class="role-picker-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            <span class="role-picker-label">All roles</span>
+            <svg class="role-picker-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="role-picker-menu" role="listbox" aria-label="Choose your role" hidden="">
+            <button type="button" class="role-picker-item" role="option" data-role-value="all" aria-selected="true">
+              <span class="role-picker-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M3.6 9h16.8"></path><path d="M3.6 15h16.8"></path><path d="M12 3a15 15 0 0 1 0 18"></path><path d="M12 3a15 15 0 0 0 0 18"></path></svg></span>
+              <span class="role-picker-item-text"><strong>All roles</strong><span>Show everything across all delivery stages</span></span>
+            </button>
+            <button type="button" class="role-picker-item" role="option" data-role-value="0" aria-selected="false">
+              <span class="role-picker-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></span>
+              <span class="role-picker-item-text"><strong>Project Manager</strong><span>Scope, capacity, milestones</span></span>
+            </button>
+            <button type="button" class="role-picker-item" role="option" data-role-value="1" aria-selected="false">
+              <span class="role-picker-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg></span>
+              <span class="role-picker-item-text"><strong>Product Owner</strong><span>Stories, backlog, priorities</span></span>
+            </button>
+            <button type="button" class="role-picker-item" role="option" data-role-value="2" aria-selected="false">
+              <span class="role-picker-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></span>
+              <span class="role-picker-item-text"><strong>Developer</strong><span>Code, tests, deployments</span></span>
+            </button>
+            <button type="button" class="role-picker-item" role="option" data-role-value="3" aria-selected="false">
+              <span class="role-picker-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1 2-2h11"></path></svg></span>
+              <span class="role-picker-item-text"><strong>QA Engineer</strong><span>Test cases, coverage, validation</span></span>
+            </button>
+            <button type="button" class="role-picker-item" role="option" data-role-value="4" aria-selected="false">
+              <span class="role-picker-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg></span>
+              <span class="role-picker-item-text"><strong>Technical Architect</strong><span>Well-Architected, diagrams, OWD</span></span>
+            </button>
+            <button type="button" class="role-picker-item" role="option" data-role-value="5" aria-selected="false">
+              <span class="role-picker-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></span>
+              <span class="role-picker-item-text"><strong>Release Manager</strong><span>Manifests, quick deploy, sandboxes</span></span>
+            </button>
+          </div>
+        </div>
+
+        <label class="search">
+          <span class="visually-hidden">Search docs</span>
+          <input type="search" placeholder="Search the docs..." autocomplete="off" spellcheck="false" data-search-enhanced="1">
+          <div class="search-results" role="listbox" hidden=""></div><span class="search-kbd" aria-hidden="true">Ctrl+K</span>
+        </label>
+        <a href="../guides/guides.html" class="btn btn-primary">Get started</a>
+        <button class="mobile-toggle is-icon" aria-label="Open navigation" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+      </div>
+    </div>
+  </header><div class="role-bar" hidden=""><div class="role-bar-inner"><span class="role-bar-dot" aria-hidden="true"></span><span class="role-bar-text">Personalised for <strong data-role-name=""></strong></span><span class="role-bar-count" data-role-count=""></span><button type="button" class="role-bar-clear">Show everything</button></div></div>
+
+  <div class="layout no-toc layout-wide">
+
+    <!-- ============ LEFT SIDEBAR ============ -->
+    <aside class="sidebar" aria-label="Section navigation">
+      <a href="../index.html" class="all-docs">‹ Back to Main Hub</a>
+
+      <nav>
+        <p class="nav-section-title">FAQs</p>
+        <ul>
+          <li><a href="faqs.html#who-is-this-for" aria-current="page">Who is this for?</a></li>
+          <li><a href="faqs.html#getting-started">Getting started</a></li>
+          <li><a href="faqs.html#everyday-use">Using it day to day</a></li>
+          <li><a href="faqs.html#skills-agents">Skills &amp; agents</a></li>
+          <li><a href="faqs.html#safety">Safety, security &amp; governance</a></li>
+          <li><a href="faqs.html#workflow">Delivery workflow</a></li>
+          <li><a href="faqs.html#troubleshooting">Troubleshooting</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main id="main" class="content" tabindex="-1">
+      <article>
+        <h1>Frequently asked questions</h1>
+        <p class="muted">Short answers with links to the full guides. This workspace is for the whole delivery
+          team, not just developers. If your question is not here, use the search box above or ask in the
+          team channel.</p>
+
+        <h2 id="who-is-this-for" class="with-rule">Who is this for?</h2>
+
+        <details class="faq-item">
+          <summary>Is this only for developers and technical people?</summary>
+          <div class="faq-body">
+            <p>No. This is the most common misconception about the workspace. It is built for the whole
+              delivery team: product owners, business analysts, QA, project managers, scrum masters,
+              release managers, and developers. Most skills produce business artefacts such as user
+              stories, test cases, release notes, meeting summaries, and status updates, not code. There
+              are dedicated guides for product owners and
+              QA alongside the
+              developer guide.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>I am not technical at all. Can I really use this?</summary>
+          <div class="faq-body">
+            <p>Yes. Day-to-day use is a chat panel where you type plain English, the same way you would
+              write a Teams message. No coding, no command line, no special syntax. The one-time setup is
+              the only technical-looking part, and the <a href="../guides/guides.html">getting
+                started guide</a> walks through it step by step with copy-paste commands.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Do I need to know how to code?</summary>
+          <div class="faq-body">
+            <p>No. Coding skills exist for developers, but you never need to touch them. Describe what you
+              want ("summarise this meeting", "draft a user story for X", "check this work item against
+              the template") and the workspace routes your request to the right workflow automatically.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>What can a product owner, business analyst, or project manager do with it?</summary>
+          <div class="faq-body">
+            <p>Turn meeting transcripts into action items and draft stories, write and refine user stories
+              with acceptance criteria in the team format, build and prioritise backlogs, check new
+              requests against the project scope, validate work items against the golden templates,
+              generate release notes, and draft stakeholder emails and ADO comments. The
+              product owner guide has worked examples.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item" open="">
+          <summary>How is this different from ChatGPT or a plain chatbot?</summary>
+          <div class="faq-body">
+            <p>It knows this project. Team conventions, work item templates, the ADO project, the wiki,
+              roles, and the project's GenAI use policy are built in, so the output matches how this team
+              actually works. A generic chatbot knows none of that, and it has none of the safety
+              guardrails this workspace enforces on every interaction.</p>
+          </div>
+        </details>
+
+        <h2 id="getting-started" class="with-rule">Getting started</h2>
+
+        <details class="faq-item">
+          <summary>How do I get started, step by step?</summary>
+          <div class="faq-body">
+            <p>Three steps. First, install the tools from the
+              <a href="../guides/guides.html">install guide</a> (copy-paste commands for every
+              platform). Second, clone the repository and open the workspace in VS Code. Third, open
+              Copilot Chat and type "what can you do": the workspace lists what is available for your
+              role and you take it from there. There is also a guided <code>workspace-setup</code> skill
+              that checks prerequisites and walks you through the whole thing.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>I have never used VS Code. Is that a problem?</summary>
+          <div class="faq-body">
+            <p>No. VS Code is just the app the chat lives in. You do not need to write or read code in it:
+              you open the workspace once, open the Copilot Chat panel, and type. The
+              <a href="../guides/guides.html">getting started guide</a> shows exactly where to
+              click.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>What should I try first?</summary>
+          <div class="faq-body">
+            <p>Something low-risk with an immediate payoff: paste a meeting transcript and ask for action
+              items, ask "who does what on the team", or ask it to quality-check one of your work items.
+              Nothing you type can change an external system without asking you first, so you can
+              explore freely.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>What is this workspace?</summary>
+          <div class="faq-body">
+            <p>A VS Code workspace for the KAB DNA delivery team with AI skills, agents, and safety
+              guardrails built in for GitHub Copilot Chat. It covers the whole delivery lifecycle:
+              discovery, backlog, development, QA, and release. Start with the
+              <a href="../guides/guides.html">getting started guide</a>.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>What do I need installed?</summary>
+          <div class="faq-body">
+            <p>Git, Node.js (18+), Python 3.11+, jq, Salesforce CLI, and VS Code with the Copilot
+              extensions. The
+              <a href="../guides/guides.html#install-tools">install guide</a> has copy-paste
+              commands for macOS, Windows, and Linux.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Does everything work on Windows?</summary>
+          <div class="faq-body">
+            <p>Yes. All safety hooks and tooling scripts are cross-platform and need only Node. Verify on
+              your machine with <code>node tooling/scripts/hooks-smoke-test.js</code>: it should report
+              all hooks passing. One Windows note: the Python launcher is <code>python</code>, not
+              <code>python3</code>.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>How do I connect to a Salesforce org?</summary>
+          <div class="faq-body">
+            <p>Authenticate with the Salesforce CLI and set a default org. No org alias is hardcoded
+              anywhere: skills read the connected org from <code>sf config get target-org</code> and
+              confirm with you before any org operation. See
+              <a href="../guides/guides.html">Step 3 of the setup guide</a>.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>What are the knowledge repos under project-knowledge/?</summary>
+          <div class="faq-body">
+            <p>Read-only knowledge repos (best practices, project wiki, source code mirrors) mounted at
+              <code>project-knowledge/</code>. They are gitignored and cloned once during setup; the
+              expected entries live in <code>workspace.yaml</code> and a session-start hook validates
+              they are present.
+            </p>
+          </div>
+        </details>
+
+        <h2 id="everyday-use" class="with-rule">Using it day to day</h2>
+
+        <details class="faq-item">
+          <summary>Do I need to learn special prompts or commands?</summary>
+          <div class="faq-body">
+            <p>No. Plain English works: ambiguous requests are routed through the
+              <code>skill-finder</code> skill to the right workflow. Slash commands such as
+              <code>/web-sync</code> are shortcuts for people who use a skill often, never a requirement.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Can I break something by asking the wrong question?</summary>
+          <div class="faq-body">
+            <p>No. Questions and local drafts are always safe. Anything that would change an external
+              system (an ADO work item, a Salesforce org, an email) requires your explicit confirmation
+              first, and destructive commands are blocked outright by the
+              <a href="../index.html#governance#hooks">safety hooks</a>. The worst outcome of a bad
+              question is an unhelpful answer.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>What if the AI gets something wrong?</summary>
+          <div class="faq-body">
+            <p>You are always the reviewer. Every output is a draft until you approve it; nothing lands in
+              ADO or Salesforce without your say-so. If an answer looks wrong, say so in the chat and it
+              corrects course. If a skill repeatedly produces wrong output, raise it with the team so the
+              skill can be fixed at the source.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>What everyday tasks does it handle well?</summary>
+          <div class="faq-body">
+            <p>Turning meeting transcripts into actions and stories, drafting user stories with acceptance
+              criteria, refining and quality-checking backlog items, generating test cases, writing
+              release notes, drafting persona-aware emails and ADO comments, checking scope against the
+              contract, and answering process questions like "who approves a release". Browse the
+              <a href="../skills/skills.html">skills catalogue</a> by delivery phase to see everything.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>How do I know the answer is based on real project data and not made up?</summary>
+          <div class="faq-body">
+            <p>Skills read live sources (ADO work items, the wiki, repo files) rather than relying on the
+              model's memory, and the workspace rules require the assistant to say "I don't know" instead
+              of guessing. When an answer cites a work item or file, you can follow the reference and
+              check it yourself.</p>
+          </div>
+        </details>
+
+        <h2 id="skills-agents" class="with-rule">Skills &amp; agents</h2>
+
+        <details class="faq-item">
+          <summary>What is a skill and how do I run one?</summary>
+          <div class="faq-body">
+            <p>A skill is a structured workflow defined in a <code>SKILL.md</code> file under
+              <code>.github/skills/</code>. You trigger it in Copilot Chat with a slash command (for
+              example <code>/web-sync</code>) or by describing what you need in plain English. Browse the
+              <a href="../skills/skills.html">skills catalogue</a>.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>What is the difference between a skill and an agent?</summary>
+          <div class="faq-body">
+            <p>A skill is a step-by-step workflow the main assistant follows. An agent is a specialised
+              sub-assistant (for example a read-only ADO scanner) that skills or you can dispatch for a
+              focused job. See the <a href="../workflow/workflow.html">agents catalogue</a>.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>I don't know which skill to use. What do I do?</summary>
+          <div class="faq-body">
+            <p>Just describe what you need in Copilot Chat. The workspace routes ambiguous requests
+              through the <code>skill-finder</code> skill, which maps plain-English asks to the right
+              skill. Asking "what can you do" also works.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>How do I add my own skill?</summary>
+          <div class="faq-body">
+            <p>Create a folder under <code>.github/skills/&lt;name&gt;/</code> with a <code>SKILL.md</code>
+              (frontmatter with name + description, then the workflow). Only <code>references/</code>,
+              <code>scripts/</code>, and <code>assets/</code> subfolders are allowed. Validate with
+              <code>node tooling/scripts/validate-skills.js</code>, then run <code>/web-sync</code> so it
+              appears on this site.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>How does the website stay in sync with the skills?</summary>
+          <div class="faq-body">
+            <p>The <code>/web-sync</code> skill parses every <code>SKILL.md</code> and agent file and
+              regenerates the site data files and stats. Run it after adding or changing a skill, agent,
+              or hook.</p>
+          </div>
+        </details>
+
+        <h2 id="safety" class="with-rule">Safety, security &amp; governance</h2>
+
+        <details class="faq-item">
+          <summary>Where do my conversations go? Is my data safe?</summary>
+          <div class="faq-body">
+            <p>The workspace runs on GitHub Copilot inside VS Code, so the terms of KAB's
+              Copilot agreement govern how prompts and responses are handled. Locally, safety hooks block
+              credential file reads and secret writes, and session events go to a hash-chained audit log
+              on your machine. See the
+              <a href="../index.html#governance">governance page</a> for the full posture.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Can I paste customer or personal data into the chat?</summary>
+          <div class="faq-body">
+            <p>No. The workspace rules keep customer, employee, contract, pricing, and personal data out
+              of AI context; use synthetic test data instead. Any new personal data element in the
+              solution itself must first be registered in the
+              <a href="../index.html#governance#gdpr">GDPR data register</a>. When in doubt, leave the
+              data out and ask the team.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Is this going to replace my job?</summary>
+          <div class="faq-body">
+            <p>No. It drafts, you decide. The project's GenAI use policy requires a human to validate
+              every AI output and forbids AI from making final business, customer, or contract decisions.
+              Treat it as a fast assistant that takes the repetitive part of the work; the judgment, the
+              context, and the accountability stay with you.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Who is accountable for what the AI produces?</summary>
+          <div class="faq-body">
+            <p>The person who uses it. Every output requires human review before it is used, and
+              AI-generated content shared externally must carry a disclosure. The AI never signs off on
+              anything; you do.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>What if I see an answer that is wrong, biased, or inappropriate?</summary>
+          <div class="faq-body">
+            <p>Do not use it, and report it. In the chat you can simply say the output is wrong and ask
+              for a correction. For recurring or serious issues, raise it with the delivery team lead so
+              it can be logged and addressed at the source.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>What stops the AI from doing something destructive?</summary>
+          <div class="faq-body">
+            <p>Safety hooks: small Node scripts that run before and after every tool call. They block
+              destructive shell commands, credential file reads, and secret writes, and require
+              confirmation for external mutations (ADO, Salesforce, email). See the
+              <a href="../index.html#governance#hooks">full hook list</a>.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Can the AI read my .env file or other secrets?</summary>
+          <div class="faq-body">
+            <p>No. The <code>block-credential-file-read</code> hook blocks reads of <code>.env</code>
+              variants, private keys, SSH and cloud credential files, and the
+              <code>guard-sensitive-files</code> hook blocks writes to them. This applies on all
+              platforms.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Will the AI change Azure DevOps or Salesforce without asking?</summary>
+          <div class="faq-body">
+            <p>No. All external mutations (ADO work item writes, deployments, emails, PRs) require
+              explicit confirmation first. Local file reads and writes auto-execute; anything that leaves
+              the machine asks.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Where is AI usage and cost tracked?</summary>
+          <div class="faq-body">
+            <p>The cost ledger hook logs token spend to <code>~/.cache/copilot/cost-ledger.md</code>
+              (macOS/Linux) or <code>%LOCALAPPDATA%\copilot\cost-ledger.md</code> (Windows). Session
+              events go to a hash-chained local audit log; summarise it with
+              <code>node tooling/scripts/export-audit-log.js</code>.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Is this compliant with the project's AI policy and the EU AI Act?</summary>
+          <div class="faq-body">
+            <p>The workspace enforces the GenAI use policy on every interaction (blocked and warned
+              action classes), keeps an <a href="../index.html#governance#ai-act">AI Act risk
+                register</a> and a <a href="../index.html#governance#gdpr">GDPR data register</a>, and
+              requires human review of all AI output. AI-generated content shared externally must carry a
+              disclosure.
+            </p>
+          </div>
+        </details>
+
+        <h2 id="workflow" class="with-rule">Delivery workflow</h2>
+
+        <details class="faq-item">
+          <summary>What is the work item hierarchy?</summary>
+          <div class="faq-body">
+            <p>Epic → Feature → User Story, never skipping a level. The User Story is the leaf
+              deliverable; Tasks are not created. See the
+              <a href="../workflow/workflow.html">7-stage workflow</a>.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>What is the commit message format?</summary>
+          <div class="faq-body">
+            <p>Every commit must start with <code>US#&lt;ID&gt;</code> referencing the user story. This is
+              enforced by commitlint, so a commit without it is rejected.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Where do deployments to SIT, UAT, and Production run?</summary>
+          <div class="faq-body">
+            <p>Only through the ADO pipelines, never from a local CLI. Local development uses scratch
+              orgs, which you can create and manage with the scratch org skills.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Is there a guide for my role?</summary>
+          <div class="faq-body">
+            <p>Yes: developers,
+              product owners, and
+              QA, plus per-role journey pages linked from
+              <a href="../index.html">My Project</a>.
+            </p>
+          </div>
+        </details>
+
+        <h2 id="troubleshooting" class="with-rule">Troubleshooting</h2>
+
+        <details class="faq-item">
+          <summary>A hook or script fails on my machine. What first?</summary>
+          <div class="faq-body">
+            <p>Check <code>node --version</code> (needs 18+), then run
+              <code>node tooling/scripts/hooks-smoke-test.js</code> from the repo root. If a specific hook
+              fails, include its name and the output when you ask for help.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Copilot says a command or tool was blocked. Why?</summary>
+          <div class="faq-body">
+            <p>A safety hook intervened: the message names the hook and the reason. This is by design for
+              destructive commands, credential files, and unconfirmed external mutations. If you believe
+              a block is wrong, raise it with the team; do not bypass the hook.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>The skill I ran behaved differently than the docs describe.</summary>
+          <div class="faq-body">
+            <p>The <code>SKILL.md</code> in the repo is the source of truth: the assistant always re-reads
+              it before executing. If the website is stale, run <code>/web-sync</code>; if the skill
+              itself is wrong, fix the <code>SKILL.md</code> and validate with
+              <code>node tooling/scripts/validate-skills.js</code>.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Search on this site returns nothing for a new page.</summary>
+          <div class="faq-body">
+            <p>The search index is generated. Rebuild it with
+              <code>node docs/assets/js/build-search-index.js</code> from the repo root and reload the
+              page.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item" open="">
+          <summary>Who do I ask when I am stuck?</summary>
+          <div class="faq-body">
+            <p>Ask in the team channel, or use the search box at the top of this site to find the relevant
+              guide. <a href="../index.html">My Project</a> shows who owns what if you need
+              a specific person.</p>
+          </div>
+        </details>
+
+      </article>
+    </main>
+
+  </div>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <p class="footer-brand"><img src="https://www.ellevio.se/gui-web/img/logo-orange.svg" alt="" loading="lazy">Cadence</p>
+        <p class="muted small">An AI workspace for delivery teams. Skills, agents, and safety guardrails inside VS Code Copilot Chat.</p>
+        <div class="resource-links">
+          <a href="https://dev.azure.com/KAB-Digital/DNA" aria-label="Azure DevOps">ADO</a>
+          <a href="https://github.com/Deloitte-Nordics/kab-housing-ai" aria-label="GitHub">GH</a>
+          <a href="https://kab-bolig.dk/" aria-label="Client">Client</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <p class="footer-heading">Start here</p>
+        <ul>
+          <li><a href="../guides/guides.html">Install &amp; setup</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-heading">Reference</p>
+        <ul>
+          <li><a href="../skills/skills.html">All skills</a></li>
+          <li><a href="../workflow/workflow.html">Agents</a></li>
+          <li><a href="../workflow/workflow.html">Workflow</a></li>
+          <li><a href="../skills/skills.html#category/architecture">Architecture</a></li>
+          <li><a href="faqs.html">FAQs</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-heading">Project</p>
+        <ul>
+          <li><a href="https://dev.azure.com/KAB-Digital/DNA">Azure DevOps</a></li>
+          <li><a href="https://dev.azure.com/KAB-Digital/DNA/_wiki">Wiki</a></li>
+          <li><a href="https://kab-bolig.dk/">KAB website</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-heading">Compliance</p>
+        <ul>
+          <li><a href="../index.html#governance#ai-act">EU AI Act register</a></li>
+          <li><a href="../index.html#governance#gdpr">GDPR data register</a></li>
+          <li><a href="../index.html#governance#hooks">Safety hooks</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="muted small">© 2026 Deloitte Digital Denmark</p>
+      <div class="footer-meta">
+        <a href="../index.html#governance#ai-disclosure">AI disclosure</a>
+        <a href="../index.html#governance#gdpr">Privacy</a>
+        <a href="https://github.com/Deloitte-Nordics/kab-housing-ai">Contribute</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./assets/personas-data.js"></script>
+  <script src="./assets/role-focus.js"></script>
+  <script src="./assets/site.js"></script><div class="nav-scrim"></div><aside class="nav-drawer nav-drawer-right" aria-label="Menu"><div class="nav-drawer-head"><p class="nav-drawer-title">Menu</p><button type="button" class="nav-drawer-close" aria-label="Close">✕</button></div><div class="nav-drawer-search"><label class="visually-hidden" for="drawer-search-input">Search docs</label><input id="drawer-search-input" type="search" placeholder="Search the docs…" autocomplete="off" spellcheck="false"></div><div><div class="role-picker-wrapper"><button type="button" class="role-picker-toggle" aria-expanded="false" aria-haspopup="listbox"><svg class="role-picker-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg><span class="role-picker-label">All roles</span><svg class="role-picker-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="role-picker-menu" role="listbox" aria-label="Choose your role" hidden=""><button type="button" class="role-picker-item" role="option" data-role-value="all" aria-selected="true"><span class="role-picker-item-icon"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M3.6 9h16.8"></path><path d="M3.6 15h16.8"></path><path d="M12 3a15 15 0 0 1 0 18"></path><path d="M12 3a15 15 0 0 0 0 18"></path></svg></span><span class="role-picker-item-text"><strong>All roles</strong><span>Show everything on every page</span></span></button><button type="button" class="role-picker-item" role="option" data-role-value="0" aria-selected="false"><span class="role-picker-item-icon"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></span><span class="role-picker-item-text"><strong>Project Manager</strong><span>Scope, capacity, milestones</span></span></button><button type="button" class="role-picker-item" role="option" data-role-value="1" aria-selected="false"><span class="role-picker-item-icon"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg></span><span class="role-picker-item-text"><strong>Product Owner</strong><span>Stories, backlog, priorities</span></span></button><button type="button" class="role-picker-item" role="option" data-role-value="2" aria-selected="false"><span class="role-picker-item-icon"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></span><span class="role-picker-item-text"><strong>Developer</strong><span>Code, tests, deployments</span></span></button><button type="button" class="role-picker-item" role="option" data-role-value="3" aria-selected="false"><span class="role-picker-item-icon"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg></span><span class="role-picker-item-text"><strong>QA Engineer</strong><span>Test cases, coverage, validation</span></span></button><button type="button" class="role-picker-item" role="option" data-role-value="4" aria-selected="false"><span class="role-picker-item-icon"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="9" y1="13" x2="15" y2="13"></line><line x1="9" y1="17" x2="13" y2="17"></line></svg></span><span class="role-picker-item-text"><strong>Business Analyst</strong><span>Discovery, process, requirements</span></span></button><button type="button" class="role-picker-item" role="option" data-role-value="5" aria-selected="false"><span class="role-picker-item-icon"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="18" r="3"></circle><circle cx="6" cy="6" r="3"></circle><path d="M6 21V9a9 9 0 0 0 9 9"></path></svg></span><span class="role-picker-item-text"><strong>Tech Lead</strong><span>Reviews, pipelines, hotfixes</span></span></button><button type="button" class="role-picker-item" role="option" data-role-value="6" aria-selected="false"><span class="role-picker-item-icon"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="14" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect></svg></span><span class="role-picker-item-text"><strong>Technical Architect</strong><span>Platform design, deployment risk</span></span></button><button type="button" class="role-picker-item" role="option" data-role-value="7" aria-selected="false"><span class="role-picker-item-icon"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 2 7l10 5 10-5-10-5z"></path><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg></span><span class="role-picker-item-text"><strong>Solution Architect</strong><span>Solution design, integrations</span></span></button><button type="button" class="role-picker-item" role="option" data-role-value="8" aria-selected="false"><span class="role-picker-item-icon"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-6.2-8.6"></path><polyline points="21 3 21 9 15 9"></polyline></svg></span><span class="role-picker-item-text"><strong>Scrum Master</strong><span>Cadence, blockers, ceremonies</span></span></button><button type="button" class="role-picker-item" role="option" data-role-value="9" aria-selected="false"><span class="role-picker-item-icon"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.3 7 12 12 20.7 7"></polyline><line x1="12" y1="22" x2="12" y2="12"></line></svg></span><span class="role-picker-item-text"><strong>Release Manager</strong><span>Promotion, drift, rollback</span></span></button><button type="button" class="role-picker-item" role="option" data-role-value="10" aria-selected="false"><span class="role-picker-item-icon"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg></span><span class="role-picker-item-text"><strong>Programme Manager</strong><span>Scope drift, governance, steering</span></span></button><button type="button" class="role-picker-item" role="option" data-role-value="11" aria-selected="false"><span class="role-picker-item-icon"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg></span><span class="role-picker-item-text"><strong>Delivery Lead</strong><span>Delivery health, dependencies</span></span></button><button type="button" class="role-picker-item" role="option" data-role-value="12" aria-selected="false"><span class="role-picker-item-icon"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"></circle><path d="M15.5 13.5 17 22l-5-3-5 3 1.5-8.5"></path></svg></span><span class="role-picker-item-text"><strong>Programme Sponsor</strong><span>Outcomes, mandate, sign-off</span></span></button></div></div></div><div class="nav-drawer-group"><h3>Site</h3><ul><li><a href="../guides/guides.html">Get started</a></li><li><a href="../workflow/workflow.html">Workflow</a></li><li><a href="../skills/skills.html">Skills</a></li><li><a href="../workflow/workflow.html">Agents</a></li><li><a href="faqs.html" aria-current="page">FAQs</a></li></ul></div></aside><aside class="nav-drawer nav-drawer-left" aria-label="On this page"><div class="nav-drawer-head"><p class="nav-drawer-title">On this page</p><button type="button" class="nav-drawer-close" aria-label="Close">✕</button></div><div class="nav-drawer-group"><ul><li class="is-sub"><a href="faqs.html#who-is-this-for">Who is this for?</a></li><li class="is-sub"><a href="faqs.html#getting-started">Getting started</a></li><li class="is-sub"><a href="faqs.html#everyday-use">Using it day to day</a></li><li class="is-sub"><a href="faqs.html#skills-agents">Skills &amp; agents</a></li><li class="is-sub"><a href="faqs.html#safety">Safety, security &amp; governance</a></li><li class="is-sub"><a href="faqs.html#workflow">Delivery workflow</a></li><li class="is-sub"><a href="faqs.html#troubleshooting">Troubleshooting</a></li></ul></div></aside>
+  <script src="./assets/search-index.js"></script>
+  <script src="./assets/search.js"></script>
+
+
+</body></html>

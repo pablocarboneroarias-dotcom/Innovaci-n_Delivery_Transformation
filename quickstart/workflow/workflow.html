@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en" data-motion="">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Workflow | Spec-Driven Development &amp; Constitution v1.3.0</title>
+  <meta name="description" content="Step-by-step guide to Spec-Driven Development (Spec Kit), 7-Stage SDD Pipeline, Nebula Logger and 5 Quality Gates.">
+  <link rel="stylesheet" href="./assets/styles.css">
+  <link rel="icon" type="image/svg+xml" href="https://www.ellevio.se/gui-web/img/logo-orange.svg">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <a href="../index.html" class="brand" aria-label="Cadence home">
+        <span class="brand-mark" aria-hidden="true"><img src="./assets/deloitte-digital-logo.png" alt=""></span>
+        <span class="brand-name"><img src="https://www.ellevio.se/gui-web/img/logo-orange.svg" alt="Ellevio"></span>
+      </a>
+
+      <nav class="primary-nav" aria-label="Primary">
+        <ul>
+          <li><a href="../guides/guides.html">Get started</a></li>
+          <li><a href="workflow.html" aria-current="page">Workflow</a></li>
+          <li><a href="../skills/skills.html">Skills</a></li>
+          <li><a href="../faqs/faqs.html">FAQs</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <div class="role-picker-wrapper role-picker-compact">
+          <button type="button" class="role-picker-toggle" aria-expanded="false" aria-haspopup="listbox">
+            <svg class="role-picker-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            <span class="role-picker-label">All roles</span>
+            <svg class="role-picker-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="role-picker-menu" role="listbox" aria-label="Choose your role" hidden="">
+            <button type="button" class="role-picker-item" role="option" data-role-value="all" aria-selected="true">
+              <span class="role-picker-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M3.6 9h16.8"></path><path d="M3.6 15h16.8"></path><path d="M12 3a15 15 0 0 1 0 18"></path><path d="M12 3a15 15 0 0 0 0 18"></path></svg></span>
+              <span class="role-picker-item-text"><strong>All roles</strong><span>Show everything across all delivery stages</span></span>
+            </button>
+            <button type="button" class="role-picker-item" role="option" data-role-value="0" aria-selected="false">
+              <span class="role-picker-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></span>
+              <span class="role-picker-item-text"><strong>Project Manager</strong><span>Scope, capacity, milestones</span></span>
+            </button>
+            <button type="button" class="role-picker-item" role="option" data-role-value="1" aria-selected="false">
+              <span class="role-picker-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg></span>
+              <span class="role-picker-item-text"><strong>Product Owner</strong><span>Stories, backlog, priorities</span></span>
+            </button>
+            <button type="button" class="role-picker-item" role="option" data-role-value="2" aria-selected="false">
+              <span class="role-picker-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></span>
+              <span class="role-picker-item-text"><strong>Developer</strong><span>Code, tests, deployments</span></span>
+            </button>
+            <button type="button" class="role-picker-item" role="option" data-role-value="3" aria-selected="false">
+              <span class="role-picker-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1 2-2h11"></path></svg></span>
+              <span class="role-picker-item-text"><strong>QA Engineer</strong><span>Test cases, coverage, validation</span></span>
+            </button>
+            <button type="button" class="role-picker-item" role="option" data-role-value="4" aria-selected="false">
+              <span class="role-picker-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg></span>
+              <span class="role-picker-item-text"><strong>Technical Architect</strong><span>Well-Architected, diagrams, OWD</span></span>
+            </button>
+            <button type="button" class="role-picker-item" role="option" data-role-value="5" aria-selected="false">
+              <span class="role-picker-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></span>
+              <span class="role-picker-item-text"><strong>Release Manager</strong><span>Manifests, quick deploy, sandboxes</span></span>
+            </button>
+          </div>
+        </div>
+
+        <button type="button" class="cmdk-trigger" data-cmdk-open="" aria-label="Search docs">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="m21 21-4.3-4.3"></path></svg>
+          <span class="cmdk-trigger-text">Search</span>
+          <kbd>⌘K</kbd>
+        </button>
+        <a href="vscode://GitHub.Copilot-Chat/chat" class="btn btn-primary">Open in VS Code</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout no-toc layout-wide">
+    <aside class="sidebar" aria-label="Section navigation">
+      <a href="../index.html" class="all-docs">‹ Back to Main Hub</a>
+
+      <nav>
+        <p class="nav-section-title">Spec Kit SDD Workflow</p>
+
+        <details open="">
+          <summary>7-Stage SDD Lifecycle</summary>
+          <ul>
+            <li><a href="#stage-constitution">1. Constitution</a></li>
+            <li><a href="#stage-specify">2. Specify</a></li>
+            <li><a href="#stage-clarify">3. Clarify</a></li>
+            <li><a href="#stage-plan">4. Plan</a></li>
+            <li><a href="#stage-tasks">5. Tasks &amp; Checklist</a></li>
+            <li><a href="#stage-analyze">6. Analyze Gate</a></li>
+            <li><a href="#stage-implement">7. Implement &amp; Test</a></li>
+          </ul>
+        </details>
+
+        <details open="">
+          <summary>Quality &amp; Standards</summary>
+          <ul>
+            <li><a href="#five-quality-gates">The 5 Quality Gates</a></li>
+            <li><a href="#nebula-logging">Nebula Logger Standards</a></li>
+            <li><a href="#git-conventions">Git Branch &amp; Commit Rules</a></li>
+          </ul>
+        </details>
+      </nav>
+    </aside>
+
+    <main id="main" class="content" tabindex="-1">
+      <article>
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li aria-current="page">Spec Kit SDD Workflow</li>
+          </ol>
+        </nav>
+
+        <p class="eyebrow">Architecture &amp; Delivery Engine</p>
+        <h1>Spec-Driven Development (Spec Kit) &amp; 7-Stage SDD</h1>
+
+        <p class="lede">
+          This comprehensive guide walks you through the 7-stage Spec Kit delivery lifecycle, the 8 core principles of the <strong>EBOAP Constitution v1.3.0</strong>, mandatory Nebula Logger observability, and automated Quality Gates.
+        </p>
+
+        <!-- 7-STAGE SDD -->
+        <h2 id="stage-constitution" class="with-rule">1. Stage 1: Constitution &amp; Governance</h2>
+        <p>The <strong>Constitution</strong> (<code>.specify/memory/constitution.md</code>) establishes the supreme architectural guidelines: Salesforce-First hierarchy, mandatory Nebula Logger, ≥85% test coverage, and human-gated AI delivery.</p>
+        <div class="code-block"><pre><code>/speckit.constitution</code></pre></div>
+
+        <h2 id="stage-specify" class="with-rule">2. Stage 2: Specify Requirements (spec.md)</h2>
+        <p>Transforms raw requirements or Figma design tokens into structured user stories with Gherkin acceptance criteria (Given-When-Then).</p>
+        <div class="code-block"><pre><code>/speckit.specify
+Create a feature specification for the Customer Energy Move-In workflow.</code></pre></div>
+
+        <h2 id="stage-clarify" class="with-rule">3. Stage 3: Clarify &amp; Ambiguity Resolution</h2>
+        <p>Identifies underspecified areas by asking up to 5 targeted clarification questions and encoding answers back into <code>spec.md</code>.</p>
+        <div class="code-block"><pre><code>/speckit.clarify</code></pre></div>
+
+        <h2 id="stage-plan" class="with-rule">4. Stage 4: Implementation Planning (plan.md)</h2>
+        <p>Generates the architectural blueprint adhering to the Salesforce-First preference hierarchy (Standard $
+ightarrow$ Declarative $
+ightarrow$ Metadata $
+ightarrow$ Flow $
+ightarrow$ Apex).</p>
+        <div class="code-block"><pre><code>/speckit.plan</code></pre></div>
+
+        <h2 id="stage-tasks" class="with-rule">5. Stage 5: Task Breakdown &amp; Checklist (tasks.md)</h2>
+        <p>Decomposes the plan into 4 phased, dependency-ordered tasks: Phase 1 (Setup), Phase 2 (Foundational), Phase 3+ (User Stories), Phase 4 (Polish &amp; Quality Gates).</p>
+        <div class="code-block"><pre><code>/speckit.tasks
+/speckit.checklist</code></pre></div>
+
+        <h2 id="stage-analyze" class="with-rule">6. Stage 6: Cross-Artifact Analyze Gate</h2>
+        <p>Performs non-destructive quality analysis across <code>spec.md</code>, <code>plan.md</code>, and <code>tasks.md</code> to guarantee 100% requirement coverage before coding starts.</p>
+        <div class="code-block"><pre><code>/speckit.analyze</code></pre></div>
+
+        <h2 id="stage-implement" class="with-rule">7. Stage 7: Implementation, Testing &amp; Convergence</h2>
+        <p>Executes tasks step by step: generating bulkified Apex, accessible LWCs, unit tests, running Code Analyzer, and converging unbuilt tasks.</p>
+        <div class="code-block"><pre><code>/speckit.implement
+/speckit.converge</code></pre></div>
+
+        <!-- 5 QUALITY GATES -->
+        <h2 id="five-quality-gates" class="with-rule">The 5 Quality Gates (Constitution v1.3.0)</h2>
+        <ol class="step-list">
+          <li><strong>Static Analysis Gate</strong>: Salesforce Code Analyzer scan must be free of Critical and High violations (PMD, SFGE, ESLint).</li>
+          <li><strong>Coverage Gate</strong>: Apex tests must achieve $ge 85%$ code coverage with 200+ bulk record assertions; complete Jest coverage on LWCs.</li>
+          <li><strong>Environment Gate</strong>: Metadata must validate with dry-run deploy (<code>sf project deploy validate</code>) on target sandbox.</li>
+          <li><strong>E2E Gate</strong>: Automated Playwright browser test suite verifies full user journeys against acceptance criteria.</li>
+          <li><strong>Release Verification Gate</strong>: Formal sign-off verifying translations (EN/SV), Nebula Logger readiness, and human authorization.</li>
+        </ol>
+
+        <!-- NEBULA LOGGER -->
+        <h2 id="nebula-logging" class="with-rule">Nebula Logger Standards (Principle IV)</h2>
+        <p>All custom Apex, LWC, and Flow logic must log through Nebula Logger:</p>
+        <div class="code-block"><pre><code>// Apex Logging Standard
+Logger.info('Starting Move-In processing for Account: ' + accountId)
+      .setRecord(accountId)
+      .setScenario('MoveIn_Onboarding');
+Logger.saveLog();</code></pre></div>
+
+        <!-- GIT CONVENTIONS -->
+        <h2 id="git-conventions" class="with-rule">Git Conventions &amp; Traceability</h2>
+        <ul class="bulleted">
+          <li><strong>Branch format</strong>: <code>feature/{slug-number}_{YYYYMMDD}_{slug-description}</code> (e.g., <code>feature/us-104_20260904_customer-move-in</code>)</li>
+          <li><strong>Commit format</strong>: <code>[{slug-number}] {type}: {subject}</code> (e.g., <code>[us-104] feat: implement move-in controller</code>)</li>
+        </ul>
+      </article>
+    </main>
+  </div>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <p class="footer-brand"><img src="https://www.ellevio.se/gui-web/img/logo-orange.svg" alt="" loading="lazy">Cadence</p>
+        <p class="muted small">Enterprise AI Delivery Architecture for Salesforce.</p>
+      </div>
+      <div class="footer-col">
+        <p class="footer-heading">Quick Links</p>
+        <ul>
+          <li><a href="../index.html">Main Hub</a></li>
+          <li><a href="../guides/guides.html">Get Started Guide</a></li>
+          <li><a href="../skills/skills.html">Skills Catalogue</a></li>
+          <li><a href="../faqs/faqs.html">FAQs</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./assets/skills-data.js"></script>
+  <script src="./assets/personas-data.js"></script>
+  <script src="./assets/search-index.js"></script>
+  <script src="./assets/site.js"></script>
+  <script src="./assets/role-focus.js"></script>
+  <script src="./assets/journey.js"></script>
+</body>
+</html>
